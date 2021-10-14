@@ -1,7 +1,7 @@
 const {Command, flags} = require('@oclif/command');
-const app = require('parseApp');
+const Markdoctor = require('./markdoctor');
 
-class VoicesParserCommand extends Command {
+class MarkdoctorCommand extends Command {
   static args = [
     {
       name: 'file',               // name of arg to show in help and reference with args[name]
@@ -12,25 +12,19 @@ class VoicesParserCommand extends Command {
   ]
 
   async run() {
-    const {flags} = this.parse(VoicesParserCommand);
-    const {args} = this.parse(VoicesParserCommand);
-
-    const file = args.file;
-    //const directory = __dirname;
-    const directory = process.cwd();
-    console.log(directory);
-    const path = directory + '/' + file;
-
-    app(path, directory);
+    const {args} = this.parse(MarkdoctorCommand);
+    console.log(args)
+    const markdoctor = new Markdoctor(process.cwd(), args.file);
+    markdoctor.run();
   }
 }
 
-VoicesParserCommand.description = `Describe the command here
+MarkdoctorCommand.description = `Describe the command here
 ...
 Extra documentation goes here
 `
 
-VoicesParserCommand.flags = {
+MarkdoctorCommand.flags = {
   // add --version flag to show CLI version
   version: flags.version({char: 'v'}),
   // add --help flag to show CLI version
@@ -38,4 +32,4 @@ VoicesParserCommand.flags = {
   name: flags.string({char: 'n', description: 'name to print'}),
 }
 
-module.exports = VoicesParserCommand;
+module.exports = MarkdoctorCommand;

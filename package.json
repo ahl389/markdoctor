@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "author": "aboucher",
   "bin": {
-    "parse": "./bin/run"
+    "markdoctor": "./bin/run"
   },
   "bugs": "https://github.com/ahl389/markdoctor/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.3",
-    "parseApp": "file:../parseApp"
+    "markdoctor-parser": "file:../markdoctor-parser"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -32,7 +32,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
-    "bin": "parse"
+    "bin": "markdoctor"
   },
   "repository": "ahl389/markdoctor",
   "scripts": {
