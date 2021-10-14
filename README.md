@@ -15,14 +15,14 @@ A markdown parser and converter that will turn markdown files into properly form
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g voices-parser
-$ parse COMMAND
+$ npm install -g @ahl389/markdoctor
+$ markdoctor COMMAND
 running command...
-$ parse (-v|--version|version)
-voices-parser/0.0.0 darwin-x64 node-v14.17.2
-$ parse --help [COMMAND]
+$ markdoctor (-v|--version|version)
+@ahl389/markdoctor/0.0.0 darwin-x64 node-v14.17.2
+$ markdoctor --help [COMMAND]
 USAGE
-  $ parse COMMAND
+  $ markdoctor COMMAND
 ...
 ```
 <!-- usagestop -->

@@ -6,7 +6,7 @@ class Markdoctor {
   }
 
   parse = () => {
-    const parse = require('markdoctor-parser');
+    const parse = require('@ahl389/markdoctor-parser');
     parse(`${this.directory}/${this.filename}`)
   }
 
