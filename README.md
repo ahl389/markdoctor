@@ -5,11 +5,11 @@ A markdown parser and converter that will turn markdown files into properly form
 
 <!-- toc -->
 * [Usage](#usage)
-* [Details about writing in markdown](#format)
+* [Format](#format)
+* [Links](#links)
 <!-- tocstop -->
 
 # Usage
-<!-- usage -->
 ```sh-session
 INSTALLATION
 $ npm install -g @ahl389/markdoctor
@@ -58,6 +58,3 @@ In order to preserve your fenced code blocks when your markdown file is converte
 [![Version](https://img.shields.io/npm/v/voices-parser.svg)](https://www.npmjs.com/package/@ahl389/markdoctor)
 [![Downloads/week](https://img.shields.io/npm/dw/voices-parser.svg)](https://www.npmjs.com/package/@ahl389/markdoctor)
 [![License](https://img.shields.io/npm/l/voices-parser.svg)](https://github.com/ahl389/markdoctor/blob/master/package.json)
-
-
-
