@@ -1,0 +1,44 @@
+{
+  "name": "markdoctor",
+  "description": "A markdown parser and converter that will turn markdown files into properly formatted Google Docs files and upload them to your Google Drive.",
+  "version": "0.0.0",
+  "author": "aboucher",
+  "bin": {
+    "parse": "./bin/run"
+  },
+  "bugs": "https://github.com/ahl389/markdoctor/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.3",
+    "parseApp": "file:../parseApp"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/src"
+  ],
+  "homepage": "https://github.com/ahl389/markdoctor",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "bin": "parse"
+  },
+  "repository": "ahl389/markdoctor",
+  "scripts": {
+    "posttest": "eslint .",
+    "prepack": "oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
