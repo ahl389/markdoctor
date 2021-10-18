@@ -47,6 +47,9 @@ In order to preserve your fenced code blocks when your markdown file is converte
 ` ``` ` <br>
 `~~~`
 
+# Integrating with Google Drive
+While the Google Drive integration is being built, you'll have to manually upload your new _.docx_ file to Google Drive. After uploading, open the file and then select **File** -> **Save as Google Docs**. This will create a copy of your file in the Google Docs format. This copy is the one you can share in order collaborate on the article and import it into Wagtail.
+
 
 # Links
 
