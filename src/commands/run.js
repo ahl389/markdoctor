@@ -1,6 +1,6 @@
 const {Command, flags} = require('@oclif/command');
 const parse = require('@ahl389/markdoctor-parser');
-const gd = require('gDriver');
+const gd = require('@ahl389/markdoctor-gdriver');
 const { execSync } = require("child_process");
 const keytar = require('keytar');
 const {cli} = require('cli-ux');
