@@ -1,13 +1,23 @@
 class Markdoctor {
   constructor(directory, filename) {
     this.filename = filename;
+    this.title = this.filename.split('.')[0];
     this.directory = directory;
     this.stylePath = `${__dirname}/style/custom-style-reference.docx`;
   }
 
   parse = () => {
     const parse = require('@ahl389/markdoctor-parser');
-    parse(`${this.directory}/${this.filename}`)
+    parse(`${this.directory}/${this.filename}`);
+  }
+
+  gDriver = async () => {
+    const gd = require('gDriver');
+    const keytar = require('keytar');
+    const credentials = await keytar.findCredentials('markdoctor');
+    const driver = new gd(this.directory, this.title, credentials);
+    const resp = await driver.go(credentials);
+    return resp;
   }
 
   execute = cmd => {
@@ -19,7 +29,7 @@ class Markdoctor {
     console[type](msg);
   }
 
-  run = () => {
+  run = async () => {
     // this.out('Parsing...');
     // this.parse();
   
@@ -27,12 +37,11 @@ class Markdoctor {
     // this.execute(`brew install pandoc`);
   
     // this.out('Converting .md to .docx...');
-    // this.execute(`pandoc --reference-doc='${this.stylePath}' parsed.md -o ${this.filename.split('.')[0]}.docx -f markdown-auto_identifiers+hard_line_breaks --no-highlight`)
+    // this.execute(`pandoc --reference-doc='${this.stylePath}' parsed.md -o ${this.filename.split('.')[0]}.docx -f markdown-auto_identifiers+hard_line_breaks --no-highlight`);
     
-    this.out('Markdoctor is done! Upload your new .docx file to Google Drive and convert it to a Google Doc before getting reviews.')
-    this.out(`https://accounts.google.com/o/oauth2/v2/auth`)
-    // this.out('Uploading to Google Drive...');
-    // this.gDriver(`${this.directory}/parsed.md`);
+    this.out('Initializing gDriver...');
+    const resp = await this.gDriver();
+    this.out(resp)
   }
 }
 
