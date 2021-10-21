@@ -1,17 +1,20 @@
 {
   "name": "@ahl389/markdoctor",
   "description": "A markdown parser and converter that will turn markdown files into properly formatted Google Docs files and upload them to your Google Drive.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "aboucher",
   "bin": {
     "markdoctor": "./bin/run"
   },
   "bugs": "https://github.com/ahl389/markdoctor/issues",
   "dependencies": {
+    "@ahl389/markdoctor-gdriver": "^1.0.0",
     "@ahl389/markdoctor-parser": "^1.0.0",
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
-    "@oclif/plugin-help": "^3.2.3"
+    "@oclif/plugin-help": "^3.2.3",
+    "chalk": "^4.1.2",
+    "keytar": "^7.7.0"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
@@ -32,7 +35,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
-    "bin": "markdoctor"
+    "bin": "markdoctor",
+    "commands": "./src/commands"
   },
   "repository": "ahl389/markdoctor",
   "scripts": {
