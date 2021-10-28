@@ -58,6 +58,7 @@ class RunCommand extends Command {
         const resp = await driver.upload(code);
         cli.action.stop(resp);
       } catch (err) {
+        console.log(err)
         cli.error(err);
       } 
     } else {
