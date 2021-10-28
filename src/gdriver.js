@@ -48,6 +48,7 @@ class gDriver {
   }
 
   upload = async code => {
+    console.log(code)
     try {
       const token = Buffer.from(`${this.credentials.account}:${this.credentials.password}`, 'utf8').toString('base64');
       const test = fs.createReadStream(this.path);

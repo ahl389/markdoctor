@@ -54,11 +54,12 @@ class RunCommand extends Command {
 
       try {
         const code = await driver.authorize();
+        console.log(code)
         const resp = await driver.upload(code);
         cli.action.stop(resp);
       } catch (err) {
         cli.error(err);
-      }
+      } 
     } else {
       this.log(`Please login with command: ${chalk.cyan('markdoctor login')}`);
     }
