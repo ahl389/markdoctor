@@ -4,10 +4,17 @@ const keytar = require('keytar');
 
 class LoginCommand extends Command {
   async run() {
+    const credentials = await keytar.findCredentials('markdoctor');
     const username = await cli.prompt('What is the username?');
-    const password = await cli.prompt('What is the password?', {type: 'masked'});
+    const password = await cli.prompt('What is the password?', {type: 'mask'});
 
-    keytar.setPassword('markdoctor', username, password);
+    if (credentials.length > 0) {
+      for (let credSet of credentials) {
+        keytar.deletePassword('markdoctor', credSet.account)
+      }
+    }
+
+    await keytar.setPassword('markdoctor', username, password);
   }
 }
 
