@@ -27,8 +27,7 @@ class gDriver {
         const token = Buffer.from(`${this.credentials.account}:${this.credentials.password}`, 'utf8').toString('base64');
 
         try {
-          const resp = await axios.post('https://markdoctor-server.vercel.app/api/auth', {
-          //const resp = await axios.post('http://localhost:5000/api/auth', {
+          const resp = await axios.post('https://markdoctor.herokuapp.com/auth', {
             headers: {
               'Authorization': `Basic ${token}`,
               'Content-Type': 'application/json'
@@ -38,7 +37,6 @@ class gDriver {
           const open = require('open');
           open(resp.data.url);
         } catch(err) {
-          if (err.response) reject(new Error(err.response.data));
           reject(new Error(err.message))
         }
       });
@@ -48,7 +46,6 @@ class gDriver {
   }
 
   upload = async code => {
-    console.log(code)
     try {
       const token = Buffer.from(`${this.credentials.account}:${this.credentials.password}`, 'utf8').toString('base64');
       const test = fs.createReadStream(this.path);
@@ -58,8 +55,7 @@ class gDriver {
       form.append('title', this.title);
       form.append('file', test);
 
-      await axios.post('https://markdoctor-server.vercel.app/api/upload', form, {
-      //await axios.post('http://localhost:5000/api/upload', form, {
+      await axios.post('https://markdoctor.herokuapp.com/upload', form, {
         headers: {
           ...form.getHeaders(),
           'Authorization': `Basic ${token}`
@@ -68,7 +64,7 @@ class gDriver {
 
       return 'Upload complete'
     } catch(err) {
-      return new Error(err.response.data);
+      return new Error(err.message);
     }
   }
 }
