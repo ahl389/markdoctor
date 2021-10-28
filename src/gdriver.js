@@ -38,7 +38,8 @@ class gDriver {
           const open = require('open');
           open(resp.data.url);
         } catch(err) {
-          reject(new Error(err.response.data));
+          if (err.response) reject(new Error(err.response.data));
+          reject(new Error(err.message))
         }
       });
 
