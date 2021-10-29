@@ -42,24 +42,24 @@ class RunCommand extends Command {
       const resp = await parse(`${this.directory}/${this.filename}`);
       cli.action.stop(resp);
 
-      cli.action.start(chalk.cyan('Installing pandoc if needed'))
-      execSync(`brew install pandoc`);
-      cli.action.stop();
+      // cli.action.start(chalk.cyan('Installing pandoc if needed'))
+      // execSync(`brew install pandoc`);
+      // cli.action.stop();
 
       cli.action.start(chalk.cyan('Converting .md to .docx'));
       execSync(`pandoc --reference-doc='${this.stylePath}' parsed.md -o ${this.filename.split('.')[0]}.docx -f markdown-auto_identifiers+hard_line_breaks --no-highlight`);
       cli.action.stop();
 
-      cli.action.start(chalk.cyan('Authorizing and uploading with Google Drive'));
-      const driver = await this.gDriver(credentials);
+      // cli.action.start(chalk.cyan('Authorizing and uploading with Google Drive'));
+      // const driver = await this.gDriver(credentials);
 
-      try {
-        const code = await driver.authorize();
-        const resp = await driver.upload(code);
-        cli.action.stop(resp);
-      } catch (err) {
-        cli.error(err);
-      } 
+      // try {
+      //   const code = await driver.authorize();
+      //   const resp = await driver.upload(code);
+      //   cli.action.stop(resp);
+      // } catch (err) {
+      //   cli.error(err);
+      // } 
     } else {
       this.log(`Please login with command: ${chalk.cyan('markdoctor login')}`);
     }

@@ -44,9 +44,9 @@ const parse = async path => {
             && !inCodeBlock
             && !currentList
         ) {
-          output.write(`&nbsp;\n\n${currentLine}\n`)
+          output.write(`&nbsp;\n\n${currentLine}\n\n`)
         } else {
-          output.write(`${currentLine}\n`);
+          output.write(`${currentLine}\n\n`);
         }
 
         if (isCode(currentLine)) inCodeBlock = !inCodeBlock;
