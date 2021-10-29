@@ -19,40 +19,44 @@ const isListItem = line => {
     : false;
 }
 
-const parse = path => {
-  const output = fs.createWriteStream('./parsed.md');
+const parse = async path => {
+  return new Promise((resolve, reject) => {
+    const output = fs.createWriteStream('./parsed.md');
 
-  const readInterface = readline.createInterface({
-    input: fs.createReadStream(path),
-    output: fs.createWriteStream('./parsed.md'),
-    console: false
-  });
+    const readInterface = readline.createInterface({
+      input: fs.createReadStream(path),
+      console: false
+    });
 
-  let prevLine = '';
-  let currentLine;
-  let inCodeBlock = false;
+    let prevLine = '';
+    let currentLine;
+    let inCodeBlock = false;
 
-  readInterface.on('line', function(line) {
-    currentLine = line.trim();
+    readInterface.on('line', function(line) {
+      currentLine = line.trim();
 
-    if (!isBlank(currentLine)) {
-      const prevHeader = isHeader(prevLine);
-      const currentHeader = isHeader(currentLine);
-      const currentList = isListItem(currentLine);
+      if (!isBlank(currentLine)) {
+        const prevHeader = isHeader(prevLine);
+        const currentHeader = isHeader(currentLine);
+        const currentList = isListItem(currentLine);
 
-      if (!currentHeader && !prevHeader 
-          && !inCodeBlock
-          && !currentList
-      ) {
-        output.write(`&nbsp;\n&nbsp;\n${currentLine}\n`)
-      } else {
-        output.write(`${currentLine}\n`);
-      }
+        if (!currentHeader && !prevHeader 
+            && !inCodeBlock
+            && !currentList
+        ) {
+          output.write(`&nbsp;\n&nbsp;\n${currentLine}\n`)
+        } else {
+          output.write(`${currentLine}\n`);
+        }
 
-      if (isCode(currentLine)) inCodeBlock = !inCodeBlock;
-      prevLine = currentLine;
-    } 
-  });
+        if (isCode(currentLine)) inCodeBlock = !inCodeBlock;
+        prevLine = currentLine;
+      } 
+    })
+    .on('close', function() {
+      resolve('Parsing complete!')
+    });
+  })
 }
 
 module.exports = parse;

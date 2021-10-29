@@ -39,8 +39,8 @@ class RunCommand extends Command {
       this.stylePath = `${__dirname}/style/custom-style-reference.docx`;
 
       cli.action.start(chalk.cyan('Parsing'))
-      parse(`${this.directory}/${this.filename}`);
-      cli.action.stop();
+      const resp = await parse(`${this.directory}/${this.filename}`);
+      cli.action.stop(resp);
 
       cli.action.start(chalk.cyan('Installing pandoc if needed'))
       execSync(`brew install pandoc`);
