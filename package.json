@@ -1,7 +1,7 @@
 {
   "name": "@ahl389/markdoctor",
   "description": "A markdown parser and converter that will turn markdown files into properly formatted Google Docs files and upload them to your Google Drive.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "aboucher",
   "bin": {
     "markdoctor": "./bin/run"
