@@ -7,8 +7,8 @@ A markdown parser and converter that will turn markdown files into properly form
 * [Installation](#installation)
 * [Usage](#usage)
 * [Format](#format)
-* [Deploying your article to Google Drive](#deploy)
-* [Features in progress](#features)
+* [Deploying your article to Google Drive](#deploying-your-markdown-article-to-google-drive)
+* [Features in progress](#features-in-progress)
 * [Links](#links)
 <!-- tocstop -->
 
@@ -100,7 +100,7 @@ Don't forget the alt text! As of writing this, alt text is not yet tested for in
 ### Tables and info/warning/danger blocks
 These have not been tested or implemented in the parser yet. This is forthcoming, stay tuned!
 
-# [Deploying your markdown article to Google Drive](#deploy)
+# Deploying your markdown article to Google Drive
 
 When you've finished writing your article, save your _.md_ file and from the directory where your file is kept, use the `run` command with your file's full name and extension:
 
@@ -114,7 +114,7 @@ This will initiate the following processes:
 - Then, a tool called `pandoc` will duplicate your parsed markdown file and convert the duplication to a _.docx_ file using a specific set of formatting guidelines. This file will also be saved in that same directory.
 - Finally, your _.docx_ file will be uploaded to your Google Drive and converted to Google Doc format. At this point, you'll be prompted to authenticate your Google account. Only people with `twilio.com` email addresses/Google will be successful.
 
-# [Features in progress](#features)
+# Features in progress
 - Automatic inline code parsing
 - Removing pandoc install on `run`
 - Table parsing
