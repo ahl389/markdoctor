@@ -40,7 +40,8 @@ const parse = async path => {
         const currentHeader = isHeader(currentLine);
         const currentList = isListItem(currentLine);
 
-        if (!currentHeader && !prevHeader 
+        if (!currentHeader
+            && !prevHeader 
             && !inCodeBlock
             && !currentList
         ) {
